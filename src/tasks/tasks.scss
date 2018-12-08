@@ -1,2 +1,6 @@
 .task {
+  &_completed {
+    color: #0000ff;
+    text-decoration: line-through;
+  }
 }
