@@ -43,5 +43,13 @@
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "whatwg-fetch": "^3.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariaZaikina/myProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dariaZaikina/myProject/issues"
+  },
+  "homepage": "https://github.com/dariaZaikina/myProject#readme"
 }
