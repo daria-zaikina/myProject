@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Tasks from '../tasks/tasks';
 import About from '../about/about';
 
-function Root() {
+function Root2() {
   return (
     <BrowserRouter>
       <div>
@@ -16,4 +16,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Root2;
