@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Task from 'tasks/task';
 import createRequest from 'core/create-request';
-import { fetchTasks } from 'core/api-config';
+import { fetchTasks,  } from 'core/api-config';
 import classNames from 'utils/class-names';
 import AddTasks from 'add-task/add-task';
 

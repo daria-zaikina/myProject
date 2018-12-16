@@ -1,39 +1,35 @@
-import React, { Component } from 'react';
+import React, { PureComponent, createRef } from 'react';
+import FormAddAdv from 'adventures/form-add-adv';
 
-class InputAdv extends Component {
-  state = {};
+class InputAdv extends PureComponent {
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  fieldElement = createRef()
+
+  onChange = () => {
+   const { handleChange, name } = this.props;
+   console.log('onChange', this.props);
+   handleChange(name, this.fieldElement.current.value);
+   console.log('input ref', this.fieldElement)
   }
+  // handleChange(event) {
+  //   this.setState({ value: event.target.value });
+  // }
 
-  handleSubmit(event) {
-    alert(`Submit${this.state.value}`);
-    event.preventDefault();
-  }
+  // handleSubmit(event) {
+  //   alert(`Submit${this.state.value}`);
+  //   event.preventDefault();
+  // }
 
   render() {
+    const { label, name } = this.props;
+    console.log(this.props);
     return (
-      <form>
-        <lable>
-          Place:
-          <input
-            type="text"
-            placeholder={this.props.name}
-            value={this.props.value}
-            onChange={this.handleChange}
-          />
-        </lable>
-        <lable>
-          dateFrom:
-          <input type="text" placeholder="dateFrom" value={this.state.value} />
-        </lable>
-        <lable>
-          dateTo:
-          <input type="text" placeholder="dateTo" value={this.state.value} />
-        </lable>
-        <input type="submit" value="submit" onClick={this.handleSubmit} />
-      </form>
+      <div>
+        <lable>{label}</lable>
+        <input type="text" name={name} 
+               ref={this.fieldElement}
+               onChange={this.onChange}/>
+      </div>
     );
   }
 }

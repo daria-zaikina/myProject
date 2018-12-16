@@ -1,38 +1,36 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import createRequest from 'adventure-core/adv-create-request';
-import { fetchTasks } from 'adventure-core/adv-api-config';
+import { fetchAdventures, createAdv  } from 'adventure-core/adv-api-config';
 import Adv from 'adventures/adv';
-import InputAdv from 'adventures/input-adv';
+import FormAddAdv from 'adventures/form-add-adv';
 //import AddAdv from...
 
-class Adventures extends Component {
+class Adventures extends PureComponent {
     state = {
         adventures: [
           // { id: '1', name: 'Tbilisi', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
           // { id: '2', name: 'Madrid', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
           // { id: '3', name: 'Berlin', dateFrom: '2019-05-20', dateTo: '2019-05-27' }
            ],
-           isOpenedAddAdverts: false
+           isOpenedAddAdverts: true
       };
 
     componentDidMount() {
-            createRequest(fetchTasks).then((request) => {
-              if (request.status === 'OK') {
-                this.setState({adventures: request.data});
+            createRequest(fetchAdventures).then((response) => {
+              if (response.status === 'OK') {
+                this.setState({adventures: response.data});
               }
             });
             
     }  
 
-    addAdv(data) {
-      this.setState({ isLoading: true });
+  addAdv(adventure) {
+      // this.setState({ isLoading: true });
 
-      createRequest(addTask, null, data).then((response) => {
+      createRequest(createAdv, null, adventure).then((response) => {
         if (response.status === "OK") {
-            this.setState(({ adventures }) => ({
-            isLoading: false,
-            adventures: adventures.concat(response.data)
-          }));
+           () => {this.setState({adventures: adventure.concat(response.data)});}
+            console.log('adventures request', response.data);
         }    
       });
     }
@@ -40,13 +38,16 @@ class Adventures extends Component {
     render() {
       const adventuresObj = this.state.adventures;
       console.log('adventuresObj', adventuresObj);
+      
       const adventureList = adventuresObj.map(
       (text, index) => <Adv name={text} key={text.id} />);
       console.log('adventuresList', adventureList);
+     
       return (
       <div className='adventures'>{adventureList}
+      {/* <FormAddAdv /> */}
       {
-        this.state.isOpenedAddAdverts && <FrormAddAdv onSend={this.addAdv}/>
+        this.state.isOpenedAddAdverts && <FormAddAdv onSend={this.addAdv}/>
       }
       </div>);
     }
