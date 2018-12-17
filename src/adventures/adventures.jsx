@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import createRequest from 'adventure-core/adv-create-request';
-import { fetchAdventures, createAdv  } from 'adventure-core/adv-api-config';
+import { fetchAdventures, createAdv, deleteAdventure  } from 'adventure-core/adv-api-config';
 import Adv from 'adventures/adv';
 import FormAddAdv from 'adventures/form-add-adv';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -13,7 +13,7 @@ class Adventures extends PureComponent {
           // { id: '2', name: 'Madrid', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
           // { id: '3', name: 'Berlin', dateFrom: '2019-05-20', dateTo: '2019-05-27' }
            ],
-           isOpenedAddAdverts: true
+           isOpenedAddForm: false
       };
 
     componentDidMount() {
@@ -25,15 +25,35 @@ class Adventures extends PureComponent {
             
     }  
 
-  addAdv(adventure) {
-      // this.setState({ isLoading: true });
+  addAdv = (adventure) => {
+       this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm});
 
       createRequest(createAdv, null, adventure).then((response) => {
         if (response.status === "OK") {
-           () => {this.setState({adventures: adventure.concat(response.data)});}
+           this.setState({adventures: this.state.adventures.concat(response.data)});
             console.log('adventures request', response.data);
         }    
       });
+    }
+
+  deleteAdv = (id) => {
+    console.log("delete", id);
+
+    createRequest(deleteAdventure, {id}).then((response) => {
+      if (response.status === "OK") {
+        this.setState(
+          {adventures: this.state.adventures.filter(
+          (text) => {return text.id !== id})
+          }
+        )
+      }
+    }
+  )
+  }
+
+    showAddForm =  () => {
+      this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm });
+      console.log('я отобразил блок', this.state.isOpenedAddForm)
     }
 
     render() {
@@ -41,15 +61,15 @@ class Adventures extends PureComponent {
       console.log('adventuresObj', adventuresObj);
       
       const adventureList = adventuresObj.map(
-      (text, index) => <Adv name={text} key={text.id}/>);
+      (text, index) => <Adv name={text} key={text.id} func={this.deleteAdv}/>);
       console.log('adventuresList', adventureList);
      
       return (
         <div className='adventures card'>
-          <img className='image' src="../img/image.jpg" />
-          <button type="button" className="btn btn-info">Create new adventure</button>
+          <img className='image'/>
+          <button type="button" className="btn btn-info" onClick={this.showAddForm}>Create new adventure</button>
           {
-             this.state.isOpenedAddAdverts && <FormAddAdv onSend={this.addAdv}/>
+             this.state.isOpenedAddForm && <FormAddAdv onSend={this.addAdv}/>
            }
           {adventureList}
       </div>);

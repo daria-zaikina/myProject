@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackplugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: [path.join(__dirname, 'src/adventure-core/adv-core.js'), path.join(__dirname, 'src/adventures/adventure.scss')],
+  entry: [
+    path.join(__dirname, 'src/adventure-core/adv-core.js'),
+    path.join(__dirname, 'src/adventures/adventure.scss'),
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -18,13 +21,15 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-proposal-class-properties'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
           },
-        },
+        ],
       },
       {
         test: /\.s?css$/,

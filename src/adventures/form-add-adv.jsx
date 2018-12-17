@@ -3,7 +3,14 @@ import InputAdv from 'adventures/input-adv';
 
 class FormAddAdv extends PureComponent {
     state = {};
+   
     textRef = createRef();
+    
+    fields = [
+        { label: 'Place', name: 'name' },
+        { label: 'Date from', name: 'dateFrom' },
+        { label: 'Date to', name: 'dateTo' },
+      ];
 
     onSubmit = (event) => {
         event.preventDefault();
@@ -16,15 +23,7 @@ class FormAddAdv extends PureComponent {
         // this.textRef.current.value = '';
     
         // console.log(this.textRef);
-        
-        };
-
-    
-    fields = [
-        { label: 'Place', name: 'name' },
-        { label: 'Date from', name: 'dateFrom' },
-        { label: 'Date to', name: 'dateTo' },
-      ];
+    };
     
     handleChange = (name,value) => {
         this.setState({[name]: value});
@@ -33,9 +32,9 @@ class FormAddAdv extends PureComponent {
 
     render() {
         return (
-         <form className="form-group" onSubmit={this.onSubmit}>
+          <form className="form-group" onSubmit={this.onSubmit}>
             {this.fields.map(fieldData => (<InputAdv {...fieldData} handleChange={this.handleChange} />))}
-            <button type="button" class="btn btn-outline-info">Create</button>
+             <button>Send data!!</button>
         </form>
         );
     }

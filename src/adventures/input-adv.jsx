@@ -2,15 +2,15 @@ import React, { PureComponent, createRef } from 'react';
 import FormAddAdv from 'adventures/form-add-adv';
 
 class InputAdv extends PureComponent {
-
-  fieldElement = createRef()
+  fieldElement = createRef();
 
   onChange = () => {
-   const { handleChange, name } = this.props;
-   console.log('onChange', this.props);
-   handleChange(name, this.fieldElement.current.value);
-   console.log('input ref', this.fieldElement)
-  }
+    const { handleChange, name } = this.props;
+    console.log('onChange', this.props);
+    handleChange(name, this.fieldElement.current.value);
+
+    console.log('input ref', this.fieldElement);
+  };
   // handleChange(event) {
   //   this.setState({ value: event.target.value });
   // }
@@ -25,11 +25,14 @@ class InputAdv extends PureComponent {
     console.log(this.props);
     return (
       <div>
-        <lable className='col-sm-4 col-form-label'>{label}</lable>
-        <input type="text" name={name} 
-               ref={this.fieldElement}
-               onChange={this.onChange}
-               className="exampleFormControlInput1"/>
+        <lable className="col-sm-4 col-form-label">{label}</lable>
+        <input
+          type="text"
+          name={name}
+          ref={this.fieldElement}
+          onChange={this.onChange}
+          className="exampleFormControlInput1"
+        />
       </div>
     );
   }
