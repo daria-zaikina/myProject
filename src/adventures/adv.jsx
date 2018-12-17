@@ -8,10 +8,10 @@ class Adv extends PureComponent {
 } = this.props.name;
     console.log('adv this.props)', this.props);
     return (
-      <div className="adventure" data-id={id}>
-        <div className="adventure-name">{name}</div>
-        <div className="adventure-date-from">{dateFrom}</div>
-        <div className="adventure-date-to">{dateTo}</div>
+      <div className="adventure card bg-warning mb-4" data-id={id}>
+        <div className="adventure-name card-header bg-info">{name}</div>
+        <div className="adventure-date-from card-title">{dateFrom}</div>
+        <div className="adventure-date-to card-title">{dateTo}</div>
       </div>
     );
   }

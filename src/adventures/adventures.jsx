@@ -3,6 +3,7 @@ import createRequest from 'adventure-core/adv-create-request';
 import { fetchAdventures, createAdv  } from 'adventure-core/adv-api-config';
 import Adv from 'adventures/adv';
 import FormAddAdv from 'adventures/form-add-adv';
+import 'bootstrap/dist/css/bootstrap.css';
 //import AddAdv from...
 
 class Adventures extends PureComponent {
@@ -40,15 +41,17 @@ class Adventures extends PureComponent {
       console.log('adventuresObj', adventuresObj);
       
       const adventureList = adventuresObj.map(
-      (text, index) => <Adv name={text} key={text.id} />);
+      (text, index) => <Adv name={text} key={text.id}/>);
       console.log('adventuresList', adventureList);
      
       return (
-      <div className='adventures'>{adventureList}
-      {/* <FormAddAdv /> */}
-      {
-        this.state.isOpenedAddAdverts && <FormAddAdv onSend={this.addAdv}/>
-      }
+        <div className='adventures card'>
+          <img className='image' src="../img/image.jpg" />
+          <button type="button" className="btn btn-info">Create new adventure</button>
+          {
+             this.state.isOpenedAddAdverts && <FormAddAdv onSend={this.addAdv}/>
+           }
+          {adventureList}
       </div>);
     }
   

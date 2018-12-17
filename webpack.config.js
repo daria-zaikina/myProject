@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackplugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: [path.join(__dirname, 'src/adventure-core/adv-core.js'), path.join(__dirname, 'src/core/main.scss')],
+  entry: [path.join(__dirname, 'src/adventure-core/adv-core.js'), path.join(__dirname, 'src/adventures/adventure.scss')],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',

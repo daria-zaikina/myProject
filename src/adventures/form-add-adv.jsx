@@ -33,9 +33,9 @@ class FormAddAdv extends PureComponent {
 
     render() {
         return (
-         <form onSubmit={this.onSubmit}>
+         <form className="form-group" onSubmit={this.onSubmit}>
             {this.fields.map(fieldData => (<InputAdv {...fieldData} handleChange={this.handleChange} />))}
-            <button>Send data!!</button>
+            <button type="button" class="btn btn-outline-info">Create</button>
         </form>
         );
     }
