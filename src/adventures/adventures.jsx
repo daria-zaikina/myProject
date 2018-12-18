@@ -7,16 +7,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 //import AddAdv from...
 
 class Adventures extends PureComponent {
-    state = {
-        adventures: [
+  state = {
+      adventures: [
           // { id: '1', name: 'Tbilisi', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
           // { id: '2', name: 'Madrid', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
           // { id: '3', name: 'Berlin', dateFrom: '2019-05-20', dateTo: '2019-05-27' }
            ],
-           isOpenedAddForm: false
+      isOpenedAddForm: false
       };
 
-    componentDidMount() {
+ componentDidMount() {
             createRequest(fetchAdventures).then((response) => {
               if (response.status === 'OK') {
                 this.setState({adventures: response.data});
@@ -30,8 +30,8 @@ class Adventures extends PureComponent {
 
       createRequest(createAdv, null, adventure).then((response) => {
         if (response.status === "OK") {
-           this.setState({adventures: this.state.adventures.concat(response.data)});
-            console.log('adventures request', response.data);
+           this.setState({adventures: [response.data, ...this.state.adventures]});
+            console.log('adventures request',this.state);
         }    
       });
     }
@@ -39,24 +39,27 @@ class Adventures extends PureComponent {
   deleteAdv = (id) => {
     console.log("delete", id);
 
-    createRequest(deleteAdventure, {id}).then((response) => {
-      if (response.status === "OK") {
-        this.setState(
-          {adventures: this.state.adventures.filter(
-          (text) => {return text.id !== id})
-          }
-        )
+      createRequest(deleteAdventure, {id}).then((response) => {
+        if (response.status === "OK") {
+          this.setState(
+            {adventures: this.state.adventures.filter(
+            (text) => {return text.id !== id})
+            }
+          )
+        }
       }
-    }
-  )
+    )
   }
 
-    showAddForm =  () => {
+  showAddForm =  () => {
       this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm });
       console.log('я отобразил блок', this.state.isOpenedAddForm)
-    }
+  }
+  sortDateDesc(objDates) {
+    console.log('objDates', objDates)
+  }
 
-    render() {
+  render() {
       const adventuresObj = this.state.adventures;
       console.log('adventuresObj', adventuresObj);
       

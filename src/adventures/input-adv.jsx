@@ -1,5 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
-import FormAddAdv from 'adventures/form-add-adv';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class InputAdv extends PureComponent {
   fieldElement = createRef();

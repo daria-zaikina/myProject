@@ -7,6 +7,6 @@ export const createAdv = {
   method: 'POST',
 };
 export const deleteAdventure = {
-  path: '/api/v001/adventures',
+  path: '/api/v001/adventures/:id',
   method: 'DELETE',
 };

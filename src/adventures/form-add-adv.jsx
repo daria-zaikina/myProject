@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef } from 'react';
 import InputAdv from 'adventures/input-adv';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class FormAddAdv extends PureComponent {
     state = {};

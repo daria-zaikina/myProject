@@ -1,5 +1,6 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Adv extends PureComponent {
   deleteAdv = () => {
@@ -7,6 +8,7 @@ class Adv extends PureComponent {
   };
 
   render() {
+    console.log('отрендерилось одно путешествие');
     const {
  name, id, dateFrom, dateTo,
 } = this.props.name;
