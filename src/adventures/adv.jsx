@@ -1,7 +1,7 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
-import Showplace from 'showplace/showplace';
+import Showplaces from 'showplace/showplaces';
 
 class Adv extends PureComponent {
   state = {
@@ -12,7 +12,7 @@ class Adv extends PureComponent {
     this.props.func(this.props.name.id);
   };
 
-  showShowplace = () => {
+  showShowplaces = () => {
     console.log('я вызвал showShowplace')
     this.setState({ isOpenedShowplace: !this.state.isOpenedShowplace });
   }
@@ -36,9 +36,9 @@ class Adv extends PureComponent {
         </div>
         <div className="adventure-date-from card-title">{dateFrom}</div>
         <div className="adventure-date-to card-title">{dateTo}</div>
-        <button type="button" className="btn btn-info" onClick={this.showShowplace}>Open showplace</button>
+        <button type="button" className="btn btn-info" onClick={this.showShowplaces}>Open showplace</button>
         {
-          this.state.isOpenedShowplace && <Showplace adventureId={id} />
+          this.state.isOpenedShowplace && <Showplaces adventureId={id} />
         }
       </div>
     );

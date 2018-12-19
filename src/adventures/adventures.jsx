@@ -23,7 +23,6 @@ class Adventures extends PureComponent {
             
   }  
 
-
   addAdv = (adventure) => {
        this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm});
 
@@ -80,6 +79,7 @@ class Adventures extends PureComponent {
       return (
         <div className='adventures card'>
           <img className='image'/>
+          <button type="button" className="btn btn-info" onClick={this.showAddForm}>Create new adventure</button>
           {
              this.state.isOpenedAddForm && <FormAddAdv onSend={this.addAdv}/>
            }
