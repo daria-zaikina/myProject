@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import createRequest from 'adventure-core/adv-create-request';
 import { fetchAdventures, createAdv, deleteAdventure  } from 'adventure-core/adv-api-config';
+import { fetchShowplace, createShowplace } from 'showplace-core/api-config';
 import Adv from 'adventures/adv';
 import FormAddAdv from 'adventures/form-add-adv';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,11 +10,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Adventures extends PureComponent {
   state = {
       adventures: [
-          // { id: '1', name: 'Tbilisi', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
-          // { id: '2', name: 'Madrid', dateFrom: '2019-05-20', dateTo: '2019-05-27' },
-          // { id: '3', name: 'Berlin', dateFrom: '2019-05-20', dateTo: '2019-05-27' }
+          // { id: '1', name: 'Tbilisi', country: 'Tbilisi', city: '', dateFrom: '2019-05-20', dateTo: '2019-05-27',timeFrom: '', timeTo: '' }
            ],
-      isOpenedAddForm: false
+      isOpenedAddForm: false,
+      isOpenedShowplace: false
       };
 
  componentDidMount() {
@@ -23,7 +23,8 @@ class Adventures extends PureComponent {
               }
             });
             
-    }  
+  }  
+
 
   addAdv = (adventure) => {
        this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm});
@@ -35,6 +36,16 @@ class Adventures extends PureComponent {
         }    
       });
     }
+
+  // addShowplace = (showplace) => {
+
+  //    createRequest(createShowplace, null, showplace).then((response) => {
+  //      if (response.status === "OK") {
+  //         this.setState({showplaces: [response.data, ...this.state.showplaces]});
+  //          console.log('adventures request',this.state);
+  //      }    
+  //    });
+  //  }
 
   deleteAdv = (id) => {
     console.log("delete", id);
@@ -64,7 +75,8 @@ class Adventures extends PureComponent {
       console.log('adventuresObj', adventuresObj);
       
       const adventureList = adventuresObj.map(
-      (text, index) => <Adv name={text} key={text.id} func={this.deleteAdv}/>);
+      (text, index) => 
+      <Adv name={text} key={text.id} func={this.deleteAdv} />);
       console.log('adventuresList', adventureList);
      
       return (

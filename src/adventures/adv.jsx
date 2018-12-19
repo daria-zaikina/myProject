@@ -1,6 +1,7 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
+import Showplace from 'showplace/showplace';
 
 class Adv extends PureComponent {
   deleteAdv = () => {
@@ -26,6 +27,7 @@ class Adv extends PureComponent {
         </div>
         <div className="adventure-date-from card-title">{dateFrom}</div>
         <div className="adventure-date-to card-title">{dateTo}</div>
+        <Showplace adventureId={this.id}/>
       </div>
     );
   }
