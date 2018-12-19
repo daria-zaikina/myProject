@@ -4,9 +4,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Showplace from 'showplace/showplace';
 
 class Adv extends PureComponent {
+  state = {
+    isOpenedShowplace: false
+  };
+  
   deleteAdv = () => {
     this.props.func(this.props.name.id);
   };
+
+  showShowplace = () => {
+    console.log('я вызвал showShowplace')
+    this.setState({ isOpenedShowplace: !this.state.isOpenedShowplace });
+  }
 
   render() {
     console.log('отрендерилось одно путешествие');
@@ -27,7 +36,10 @@ class Adv extends PureComponent {
         </div>
         <div className="adventure-date-from card-title">{dateFrom}</div>
         <div className="adventure-date-to card-title">{dateTo}</div>
-        <Showplace adventureId={this.id}/>
+        <button type="button" className="btn btn-info" onClick={this.showShowplace}>Open showplace</button>
+        {
+          this.state.isOpenedShowplace && <Showplace adventureId={id} />
+        }
       </div>
     );
   }

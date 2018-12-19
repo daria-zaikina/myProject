@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import createRequest from 'adventure-core/adv-create-request';
 import { fetchAdventures, createAdv, deleteAdventure  } from 'adventure-core/adv-api-config';
-import { fetchShowplace, createShowplace } from 'showplace-core/api-config';
 import Adv from 'adventures/adv';
 import FormAddAdv from 'adventures/form-add-adv';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -12,8 +11,7 @@ class Adventures extends PureComponent {
       adventures: [
           // { id: '1', name: 'Tbilisi', country: 'Tbilisi', city: '', dateFrom: '2019-05-20', dateTo: '2019-05-27',timeFrom: '', timeTo: '' }
            ],
-      isOpenedAddForm: false,
-      isOpenedShowplace: false
+      isOpenedAddForm: false
       };
 
  componentDidMount() {
@@ -82,7 +80,6 @@ class Adventures extends PureComponent {
       return (
         <div className='adventures card'>
           <img className='image'/>
-          <button type="button" className="btn btn-info" onClick={this.showAddForm}>Create new adventure</button>
           {
              this.state.isOpenedAddForm && <FormAddAdv onSend={this.addAdv}/>
            }
