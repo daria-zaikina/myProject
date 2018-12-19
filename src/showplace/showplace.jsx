@@ -9,7 +9,7 @@ class Showplace extends PureComponent {
 
   render() {
     console.log('отрендерилось одну достопремечательность', this.props.data);
-    const { name, id, location } = this.props.data;
+    const { name, id, location, duration } = this.props.data;
     // const func = this.props.func;
     return (
       <div className="showplace card bg-warning mb-4">
@@ -21,7 +21,8 @@ class Showplace extends PureComponent {
             </span>
           </button>
         </div>
-        <div className="showplace-date-from card-title">{location}</div>
+        <div className="showplace-location card-title">{location}</div>
+        <div className="showplace-duration card-title">{duration}</div>
       </div>
     );
   }

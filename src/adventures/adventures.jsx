@@ -59,7 +59,7 @@ class Adventures extends PureComponent {
     )
   }
 
-  showAddForm =  () => {
+  showAddForm = () => {
       this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm });
       console.log('я отобразил блок', this.state.isOpenedAddForm)
   }

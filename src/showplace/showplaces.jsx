@@ -1,16 +1,32 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
-import { fetchShowplaces } from 'showplace-core/api-config';
+import { fetchShowplaces, createShowplace } from 'showplace-core/api-config';
 import createRequest from 'adventure-core/adv-create-request';
 import Showplace from 'showplace/showplace';
+import FormAddShowplace from 'showplace/showplace-form';
 
 class Showplaces extends PureComponent {
   state = {
     showplaces: [
       // { id: '', name: '', location: '', duration: '', adventureId: ''}
     ],
+    isOpendShowplaceForm: false
   };
+
+  showShowplaceForm = () => {
+    this.setState({ isOpendShowplaceForm: !this.state.isOpendShowplaceForm })
+    console.log('showShowplaceForm');
+  }
+
+  addShowplace = (showplaces) => {
+    createRequest(createShowplace, null, showplaces).then((response) => {
+      if (response.status === "OK") {
+         this.setState({showplaces: [response.data, ...this.state.showplaces]});
+          console.log('adventures request',this.state);
+      }    
+    });
+  }
 
   componentDidMount() {
     const { adventureId } = this.props;
@@ -20,6 +36,7 @@ class Showplaces extends PureComponent {
         this.setState({ showplaces: response.data });
       }
     });
+    console.log('showplaces', this.state);
   }
 
   // deleteShowplace = () => {
@@ -27,11 +44,18 @@ class Showplaces extends PureComponent {
   // };
 
   render() {
+    const { adventureId } = this.props
     const showplacesObj = this.state.showplaces;
     console.log('отрендерилось одна достоприм', this.state);
-    console.log('showplacesObj', showplacesObj);
+    console.log('adventureId', adventureId);
     return (
-       showplacesObj.map((text) => <Showplace data={text} />)
+      <div>
+         <button type="button" className="btn btn-info" onClick={this.showShowplaceForm}>Create new showplace</button>
+         {
+             this.state.isOpendShowplaceForm && <FormAddShowplace onSend={this.addShowplace} adventureId={this.adventureId} />
+           }
+         {showplacesObj.map((text) => <Showplace data={text} />)}
+       </div>
       );
   }
 }

@@ -11,14 +11,6 @@ class InputAdv extends PureComponent {
 
     console.log('input ref', this.fieldElement);
   };
-  // handleChange(event) {
-  //   this.setState({ value: event.target.value });
-  // }
-
-  // handleSubmit(event) {
-  //   alert(`Submit${this.state.value}`);
-  //   event.preventDefault();
-  // }
 
   render() {
     const { label, name } = this.props;
