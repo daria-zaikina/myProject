@@ -52,7 +52,7 @@ class Showplaces extends PureComponent {
       <div>
          <button type="button" className="btn btn-info" onClick={this.showShowplaceForm}>Create new showplace</button>
          {
-             this.state.isOpendShowplaceForm && <FormAddShowplace onSend={this.addShowplace} adventureId={this.adventureId} />
+             this.state.isOpendShowplaceForm && <FormAddShowplace onSend={this.addShowplace} adventureId={adventureId} />
            }
          {showplacesObj.map((text) => <Showplace data={text} />)}
        </div>

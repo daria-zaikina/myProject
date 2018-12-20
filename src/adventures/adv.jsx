@@ -18,7 +18,7 @@ class Adv extends PureComponent {
   }
 
   render() {
-    console.log('отрендерилось одно путешествие');
+    console.log('отрендерилось одно путешествие', this.props.name);
     const {
  name, id, dateFrom, dateTo,
 } = this.props.name;

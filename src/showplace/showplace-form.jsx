@@ -19,8 +19,10 @@ class FormAddShowplace extends PureComponent {
         event.preventDefault();
         const { onSend, adventureId } = this.props;
         const data = this.state;
+        data.adventureId = adventureId;
+        console.log('data', data);
         console.log('state onsubmit', this.props);
-        // onSend(data);
+        onSend(data);
     }
 
     render() {
