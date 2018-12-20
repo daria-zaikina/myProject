@@ -28,6 +28,21 @@ class Showplaces extends PureComponent {
     });
   }
 
+  deleteShowplace = (id) => {
+    console.log("delete Showplace", id);
+
+      // createRequest(deleteAdventure, {id}).then((response) => {
+      //   if (response.status === "OK") {
+      //     this.setState(
+      //       {adventures: this.state.adventures.filter(
+      //       (text) => {return text.id !== id})
+      //       }
+      //     )
+      //   }
+      // }
+    // )
+  }
+
   componentDidMount() {
     const { adventureId } = this.props;
 

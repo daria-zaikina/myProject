@@ -7,10 +7,6 @@ class Adv extends PureComponent {
   state = {
     isOpenedShowplace: false
   };
-  
-  deleteAdv = () => {
-    this.props.func(this.props.name.id);
-  };
 
   showShowplaces = () => {
     console.log('я вызвал showShowplace')
@@ -28,11 +24,6 @@ class Adv extends PureComponent {
       <div className="adventure card bg-warning mb-4" data-id={id}>
         <div className="adventure-name card-header bg-info">
           {name}
-          <button type="button" className="close">
-            <span aria-hidden="true" onClick={this.deleteAdv}>
-              &times;
-            </span>
-          </button>
         </div>
         <div className="adventure-date-from card-title">{dateFrom}</div>
         <div className="adventure-date-to card-title">{dateTo}</div>
