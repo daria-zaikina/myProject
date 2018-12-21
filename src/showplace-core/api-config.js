@@ -12,3 +12,8 @@ export const createShowplace = {
   path: '/api/v001/showplaces',
   method: 'POST',
 };
+
+export const deleteShowplace = {
+  path: '/api/v001/showplaces/:id',
+  method: 'DELETE',
+};
