@@ -44,19 +44,19 @@ class Adv extends PureComponent {
           <div className="adventure-city lable">{city}</div>
         </div>
         <div className='value-conteiner'>
-          <div className="lable">Date from</div>
+          <div className="lable">Date from:</div>
           <div className="adventure-date-from lable">{dateFrom}</div>
         </div>
         <div className='value-conteiner'>
-          <div className="lable">Date to</div>
+          <div className="lable">Date to:</div>
           <div className="adventure-date-to lable">{dateTo}</div>
         </div>
         <div className='value-conteiner'>
-          <div className="lable">Time from</div>
+          <div className="lable">Time from:</div>
           <div className="adventure-time-from lable">{timeFrom}</div>
         </div>
         <div className='value-conteiner'>
-          <div className="lable">Time to</div>
+          <div className="lable">Time to:</div>
           <div className="adventure-time-to lable">{timeTo}</div>
         </div>
         <button type="button" className="btn btn-outline-info" onClick={this.showShowplaces}>Open showplace</button>

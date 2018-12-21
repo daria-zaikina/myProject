@@ -78,9 +78,6 @@ class Adventures extends PureComponent {
      
       return (
         <div className='adventures card '>
-        <div className='header'>
-          <img className="header-img d-block img-fluid" src='https://otvet.imgsmail.ru/download/7deed5cdb51f701a0a50a0d660aa755e_i-10.jpg' alt="First slide"/>
-        </div>
           <Slider />
           <button type="button" className="btn btn-outline-info" onClick={this.showAddForm}>Create new adventure</button>
           <button type="button" className="btn btn-outline-info" onClick={this.sortAdventures}>Sort adventures by date</button>
