@@ -17,13 +17,13 @@ class InputAdv extends PureComponent {
     console.log(this.props);
     return (
       <div>
-        <lable className="col-sm-4 col-form-label">{label}</lable>
+        <div className="input-lable">{label}</div>
         <input
           type="text"
           name={name}
           ref={this.fieldElement}
           onChange={this.onChange}
-          className="exampleFormControlInput1"
+          className="exampleFormControlInput1lable input"
         />
       </div>
     );

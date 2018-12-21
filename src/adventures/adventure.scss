@@ -2,11 +2,41 @@
   display: block;
   margin: 0 auto;
   width: 800px;
-  margin-top: 30px;
 }
 .image {
   width: 800px;
   height: 500px;
-  background-image: url("./image.jpg");
+  background-image: url("https://odis.homeaway.com/odis/destination/1d9c46c7-59f7-4991-bb79-d1bf145d4dd3.hw1.jpg");
   background-size: cover;
+}
+
+.lable {
+  height: 30px;
+  width: 100px;
+  display: inline-block;
+  margin-left: 5%;
+}
+.header {
+  width: 800px;
+  height: 230px;
+  background-color: #ffffff;
+}
+
+.header-img {
+  display:block; 
+  margin:0 auto;
+}
+.btn {
+  margin: 10px;
+}
+.input {
+  width: 300px;
+  display: inline;
+  margin: 0px 10px;
+}
+.input-lable {
+  display: inline;
+  width: 200px;
+  height: 20px;
+  margin-right: 30px;
 }

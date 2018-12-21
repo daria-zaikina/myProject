@@ -4,6 +4,7 @@ import { fetchAdventures, createAdv, deleteAdventure  } from 'adventure-core/adv
 import Adv from 'adventures/adv';
 import FormAddAdv from 'adventures/form-add-adv';
 import 'bootstrap/dist/css/bootstrap.css';
+import Slider from 'adventures/slider'
 //import AddAdv from...
 
 class Adventures extends PureComponent {
@@ -14,6 +15,7 @@ class Adventures extends PureComponent {
       isOpenedAddForm: false
       };
 
+      
  componentDidMount() {
             createRequest(fetchAdventures).then((response) => {
               if (response.status === 'OK') {
@@ -22,6 +24,17 @@ class Adventures extends PureComponent {
             });
             
   }  
+
+  sortByDate = (A, B) => {
+    const dateA=new Date(A.dateFrom), dateB=new Date(B.dateFrom)
+    return dateB-dateA;
+ }
+  
+  sortAdventures = () => {
+  this.setState({adventures: this.state.adventures.sort(this.sortByDate)})
+  console.log('sort state',  this.state.adventures.sort(this.sortByDate));
+  this.forceUpdate();
+ }
 
   addAdv = (adventure) => {
        this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm});
@@ -33,16 +46,6 @@ class Adventures extends PureComponent {
         }    
       });
     }
-
-  // addShowplace = (showplace) => {
-
-  //    createRequest(createShowplace, null, showplace).then((response) => {
-  //      if (response.status === "OK") {
-  //         this.setState({showplaces: [response.data, ...this.state.showplaces]});
-  //          console.log('adventures request',this.state);
-  //      }    
-  //    });
-  //  }
 
   deleteAdv = (id) => {
     console.log("delete", id);
@@ -63,9 +66,6 @@ class Adventures extends PureComponent {
       this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm });
       console.log('я отобразил блок', this.state.isOpenedAddForm)
   }
-  sortDateDesc(objDates) {
-    console.log('objDates', objDates)
-  }
 
   render() {
       const adventuresObj = this.state.adventures;
@@ -77,9 +77,13 @@ class Adventures extends PureComponent {
       console.log('adventuresList', adventureList);
      
       return (
-        <div className='adventures card'>
-          <img className='image'/>
-          <button type="button" className="btn btn-info" onClick={this.showAddForm}>Create new adventure</button>
+        <div className='adventures card '>
+        <div className='header'>
+          <img className="header-img d-block img-fluid" src='https://otvet.imgsmail.ru/download/7deed5cdb51f701a0a50a0d660aa755e_i-10.jpg' alt="First slide"/>
+        </div>
+          <Slider />
+          <button type="button" className="btn btn-outline-info" onClick={this.showAddForm}>Create new adventure</button>
+          <button type="button" className="btn btn-outline-info" onClick={this.sortAdventures}>Sort adventures by date</button>
           {
              this.state.isOpenedAddForm && <FormAddAdv onSend={this.addAdv}/>
            }

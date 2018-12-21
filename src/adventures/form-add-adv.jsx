@@ -8,16 +8,20 @@ class FormAddAdv extends PureComponent {
     textRef = createRef();
     
     fields = [
-        { label: 'Place', name: 'name' },
+        { label: 'Adventure name', name: 'name' },
+        { label: 'Country', name: 'country' },
+        { label: 'City', name: 'city' },
         { label: 'Date from', name: 'dateFrom' },
         { label: 'Date to', name: 'dateTo' },
+        { label: 'Time from', name: 'timeFrom' },
+        { label: 'Time to', name: 'timeTo' }
       ];
 
     onSubmit = (event) => {
         event.preventDefault();
         const { onSend } = this.props;
         const data = this.state;
-        console.log('state onsubmit', this.props);
+        console.log('state onsubmit', data);
         onSend(data);
         
         // addAdventure(this.textRef.current.value);
