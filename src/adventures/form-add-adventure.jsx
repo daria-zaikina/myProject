@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef } from 'react';
-import InputAdv from 'adventures/input-adv';
+import InputAdventure from 'adventures/input-adventure';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class FormAddAdv extends PureComponent {
+class FormAddAdventure extends PureComponent {
     state = {};
    
     textRef = createRef();
@@ -23,11 +23,6 @@ class FormAddAdv extends PureComponent {
         const data = this.state;
         console.log('state onsubmit', data);
         onSend(data);
-        
-        // addAdventure(this.textRef.current.value);
-        // this.textRef.current.value = '';
-    
-        // console.log(this.textRef);
     };
     
     handleChange = (name,value) => {
@@ -38,10 +33,10 @@ class FormAddAdv extends PureComponent {
     render() {
         return (
           <form className="form-group" onSubmit={this.onSubmit}>
-            {this.fields.map(fieldData => (<InputAdv {...fieldData} handleChange={this.handleChange} />))}
-             <button>Send data!!</button>
+            {this.fields.map(fieldData => (<InputAdventure {...fieldData} handleChange={this.handleChange} />))}
+             <button className="btn btn-outline-info">Send data!!</button>
         </form>
         );
     }
 }
-export default FormAddAdv;
+export default FormAddAdventure;

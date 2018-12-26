@@ -27,9 +27,9 @@ class FormAddShowplace extends PureComponent {
 
     render() {
        return (
-            <form className="" onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>
                { this.fields.map(fieldData => <InputShowplace {...fieldData} handleChange={this.handleChange} />) }
-               <button>Send showplace</button>
+               <button className="btn btn-outline-warning">Send showplace</button>
             </form>
         );
     }

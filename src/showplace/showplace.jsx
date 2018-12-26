@@ -13,8 +13,8 @@ class Showplace extends PureComponent {
     const deleteFunc = this.props.func;
     // const func = this.props.func;
     return (
-      <div className="showplace card bg-warning mb-4">
-        <div className="showplace-name card-header bg-info">
+      <div className="showplace card row">
+        <div className="showplace-name card-header bg-warning">
           {name}
           <button type="button" className="close">
             <span aria-hidden="true" onClick={this.delShowplace}>
@@ -22,8 +22,8 @@ class Showplace extends PureComponent {
             </span>
           </button>
         </div>
-        <div className="showplace-location card-title">{location}</div>
-        <div className="showplace-duration card-title">{duration}</div>
+        <div className="showplace-location card-title col-4">{location}</div>
+        <div className="showplace-duration card-title col-4">{duration}</div>
       </div>
     );
   }

@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
-import createRequest from 'adventure-core/adv-create-request';
-import { fetchAdventures, createAdv, deleteAdventure  } from 'adventure-core/adv-api-config';
-import Adv from 'adventures/adv';
-import FormAddAdv from 'adventures/form-add-adv';
+import createRequest from 'adventure-core/create-request';
+import { fetchAdventures, createAdventure, deleteAdventure  } from 'adventure-core/api-config';
+import Adventure from 'adventures/adventure';
+import FormAddAdventure from 'adventures/form-add-adventure';
 import 'bootstrap/dist/css/bootstrap.css';
 import Slider from 'adventures/slider'
-//import AddAdv from...
 
 class Adventures extends PureComponent {
   state = {
@@ -26,20 +25,20 @@ class Adventures extends PureComponent {
   }  
 
   sortByDate = (A, B) => {
-    const dateA=new Date(A.dateFrom), dateB=new Date(B.dateFrom)
-    return dateB-dateA;
- }
+     const dateA=new Date(A.dateFrom), dateB=new Date(B.dateFrom)
+     return dateA-dateB;
+  }
   
   sortAdventures = () => {
-  this.setState({adventures: this.state.adventures.sort(this.sortByDate)})
-  console.log('sort state',  this.state.adventures.sort(this.sortByDate));
-  this.forceUpdate();
- }
+     this.setState({adventures: this.state.adventures.sort(this.sortByDate)})
+     console.log('sort state',  this.state.adventures.sort(this.sortByDate));
+     this.forceUpdate();
+  }
 
-  addAdv = (adventure) => {
+  addAdventure = (adventure) => {
        this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm});
 
-      createRequest(createAdv, null, adventure).then((response) => {
+      createRequest(createAdventure, null, adventure).then((response) => {
         if (response.status === "OK") {
            this.setState({adventures: [response.data, ...this.state.adventures]});
             console.log('adventures request',this.state);
@@ -47,7 +46,7 @@ class Adventures extends PureComponent {
       });
     }
 
-  deleteAdv = (id) => {
+  deleteAdventure = (id) => {
     console.log("delete", id);
 
       createRequest(deleteAdventure, {id}).then((response) => {
@@ -62,7 +61,7 @@ class Adventures extends PureComponent {
     )
   }
 
-  showAddForm = () => {
+  showAddAdventureForm = () => {
       this.setState({ isOpenedAddForm: !this.state.isOpenedAddForm });
       console.log('я отобразил блок', this.state.isOpenedAddForm)
   }
@@ -71,20 +70,26 @@ class Adventures extends PureComponent {
       const adventuresObj = this.state.adventures;
       console.log('adventuresObj', adventuresObj);
       
-      const adventureList = adventuresObj.map(
+      const adventuresComponentList = adventuresObj.map(
       (text, index) => 
-      <Adv name={text} key={text.id} func={this.deleteAdv} />);
-      console.log('adventuresList', adventureList);
+      <Adventure name={text} key={text.id} func={this.deleteAdventure} />);
+      console.log('adventuresList', adventuresComponentList);
      
       return (
-        <div className='adventures card '>
-          <Slider />
-          <button type="button" className="btn btn-outline-info" onClick={this.showAddForm}>Create new adventure</button>
-          <button type="button" className="btn btn-outline-info" onClick={this.sortAdventures}>Sort adventures by date</button>
-          {
-             this.state.isOpenedAddForm && <FormAddAdv onSend={this.addAdv}/>
-           }
-          {adventureList}
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+             <div className='adventures card col-6'>
+             <Slider />
+             <div className='row justify-content-center'>
+                <button type="button" className="btn btn-outline-info col-4" onClick={this.showAddAdventureForm}>Create new adventure</button>
+                <button type="button" className="btn btn-outline-info col-4" onClick={this.sortAdventures}>Sort adventures by date</button>
+             </div>
+             {
+                this.state.isOpenedAddForm && <FormAddAdventure onSend={this.addAdventure}/>
+              }
+             {adventuresComponentList}
+             </div>
+           </div>
       </div>);
     }
   

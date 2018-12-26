@@ -2,7 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import { fetchShowplaces, createShowplace, deleteShowplace } from 'showplace-core/api-config';
-import createRequest from 'adventure-core/adv-create-request';
+import createRequest from 'adventure-core/create-request';
 import Showplace from 'showplace/showplace';
 import FormAddShowplace from 'showplace/showplace-form';
 
@@ -62,7 +62,7 @@ class Showplaces extends PureComponent {
     console.log('adventureId', adventureId);
     return (
       <div>
-         <button type="button" className="btn btn-info" onClick={this.showShowplaceForm}>Create new showplace</button>
+         <button type="button" className="btn btn-warning" onClick={this.showShowplaceForm}>Create new showplace</button>
          {
              this.state.isOpendShowplaceForm && <FormAddShowplace onSend={this.addShowplace} adventureId={adventureId} />
            }

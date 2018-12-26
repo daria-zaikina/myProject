@@ -2,7 +2,7 @@ export const fetchAdventures = {
   path: '/api/v001/adventures',
   method: 'GET',
 };
-export const createAdv = {
+export const createAdventure = {
   path: '/api/v001/adventures',
   method: 'POST',
 };

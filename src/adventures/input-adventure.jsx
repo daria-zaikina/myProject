@@ -1,7 +1,7 @@
 import React, { PureComponent, createRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class InputAdv extends PureComponent {
+class InputAdventure extends PureComponent {
   fieldElement = createRef();
 
   onChange = () => {
@@ -16,17 +16,14 @@ class InputAdv extends PureComponent {
     const { label, name } = this.props;
     console.log(this.props);
     return (
-      <div>
-        <div className="input-lable">{label}</div>
-        <input
-          type="text"
-          name={name}
+      <div class="form-group row">
+         <label className="col-sm-2 col-form-label">{label}</label>
+         <div class="col-sm-7">
+           <input type="text" class="form-control" name={name}
           ref={this.fieldElement}
-          onChange={this.onChange}
-          className="exampleFormControlInput1lable input"
-        />
-      </div>
-    );
+          onChange={this.onChange} />
+        </div>
+     </div>);
   }
 }
-export default InputAdv;
+export default InputAdventure;

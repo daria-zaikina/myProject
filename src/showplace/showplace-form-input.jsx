@@ -16,15 +16,13 @@ class InputShowplace extends PureComponent {
     const { label, name } = this.props;
     console.log(this.props);
     return (
-      <div>
-        <lable className="col-sm-4 col-form-label">{label}</lable>
-        <input
-          type="text"
-          name={name}
-          ref={this.fieldElement}
-          onChange={this.onChange}
-          className="exampleFormControlInput1"
-        />
+      <div class="form-group row">
+        <label className="col-sm-2 col-form-label">{label}</label>
+        <div class="col-sm-7">
+          <input type="text" class="form-control" name={name}
+                ref={this.fieldElement}
+                onChange={this.onChange} />
+         </div>
       </div>
     );
   }
